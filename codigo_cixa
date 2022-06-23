@@ -1,0 +1,48 @@
+class Bank:
+    def __init__(self, Account, PassWord):
+        from random import randint
+        
+        self.id_a = randint(0, 500)
+        self.User = {
+            'Account': Account,
+            'PassWord': PassWord,
+            'Id': self.id_a,
+            'Money': 0
+        }
+        
+    def MostrarDados(self):
+        return self.User
+        
+    def Add_Dinheiro(self, quantia, PassWord):
+        if PassWord == self.User['PassWord']:
+            self.User['Money'] += quantia
+        else:
+            print('SENHA ERRADA!')
+            
+    def Remover_Dinheiro(self, quantia, PassWord):
+        if PassWord == self.User['PassWord']:
+            if self.User['Money'] >= quantia:
+                self.User['Money'] -= quantia
+            else:
+                print('Você não possui essa quantia!')
+        else:
+            print('SENHA ERRADA!')
+    
+    def MostrarDinheiro(self):
+        return f'R${self.User["Money"]}'
+        
+    def Alterar_Senha(self, OldPassword, NewPassword):
+        if NewPassword != self.User['PassWord']:
+            self.User['PassWord'] = NewPassword
+            
+        elif OldPassword == NewPassword:
+            print('A SENHA ANTIGA NÃO PODE SER A MESMA QUE A NOVA!')
+            
+        else:
+            print('SENHA ANTIGA ERRADA')
+            
+    def EsqueciSenha(self, NewPassword):
+        if NewPassword != self.User['PassWord']:
+            self.User['PassWord'] = NewPassword
+        else:
+            print('A NOVA SENHA NÃO PODE SER A ANTIGA!')
