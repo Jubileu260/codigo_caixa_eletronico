@@ -1,5 +1,5 @@
 class Bank:
-    def __init__(self, Account, PassWord):
+    def __init__(self, Account, PassWord): # Cadastramento de conta
         from random import randint
         
         self.id_a = randint(0, 500)
@@ -10,16 +10,16 @@ class Bank:
             'Money': 0
         }
         
-    def MostrarDados(self):
+    def MostrarDados(self): # mostrar todos os dados da conta
         return self.User
         
-    def Add_Dinheiro(self, quantia, PassWord):
+    def Add_Dinheiro(self, quantia, PassWord): # adicionar dinheiro
         if PassWord == self.User['PassWord']:
             self.User['Money'] += quantia
         else:
             print('SENHA ERRADA!')
             
-    def Remover_Dinheiro(self, quantia, PassWord):
+    def Remover_Dinheiro(self, quantia, PassWord): # remover dinheiro
         if PassWord == self.User['PassWord']:
             if self.User['Money'] >= quantia:
                 self.User['Money'] -= quantia
@@ -28,10 +28,10 @@ class Bank:
         else:
             print('SENHA ERRADA!')
     
-    def MostrarDinheiro(self):
+    def MostrarDinheiro(self): # mostrar dinheiro
         return f'R${self.User["Money"]}'
         
-    def Alterar_Senha(self, OldPassword, NewPassword):
+    def Alterar_Senha(self, OldPassword, NewPassword): # alterar a senha da conta
         if NewPassword != self.User['PassWord']:
             self.User['PassWord'] = NewPassword
             
@@ -41,7 +41,7 @@ class Bank:
         else:
             print('SENHA ANTIGA ERRADA')
             
-    def EsqueciSenha(self, NewPassword):
+    def EsqueciSenha(self, NewPassword): # esqueci a senha
         if NewPassword != self.User['PassWord']:
             self.User['PassWord'] = NewPassword
         else:
